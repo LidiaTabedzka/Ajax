@@ -2,10 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
+        <h1>Country search engine</h1>
+        <button id="search">Search a country</button>
+        <input id="country-name" type="text"/>
+        <img src="https://images.pexels.com/photos/335393/pexels-photo-335393.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" alt="">
+        <h2>List of countries:</h2>
+        <ul id="countries" class="container">
+            <li class="single-country-card">
+                <h3>COUNTRY NAME</h3>
+                <h4>More information :</h4>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <p>Capital :</p>
+                        <p>Region :</p>
+                        <p>Subregion :</p>
+                        <p>Population :</p>
+                        <p>Currency :</p>
+                    </div>
+                    <div class="col-xs-9">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="card-footer"></div>
+            </li>
+        </ul>
 
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/script.js"></script>
     </body>
 </html>
