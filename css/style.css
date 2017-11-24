@@ -52,6 +52,11 @@ button:hover {
 h3 {
     color: #77161b;
 }
+h3:hover {
+    background-color: #77161b;
+    color: white;
+    cursor: pointer;
+}
 h3,
 h4 {
     padding: 10px;
@@ -68,4 +73,12 @@ h4 {
     background-color: #77161b;
     margin: 0;
     padding: 10px;
+}
+img {
+    width: 100%;
+}
+h4,
+.row,
+.card-footer {
+    display: none;
 }
