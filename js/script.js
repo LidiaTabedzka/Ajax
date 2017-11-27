@@ -32,10 +32,8 @@ function showCountriesList(resp){
     countriesList.empty();
     var countryName = $('#country-name').val();
 
-    var filteredCountries = resp.filter(function(singleCountry){
-       var indexInputValueSmall = singleCountry.name.toLowerCase().indexOf(countryName);
-       var indexInputValueCapilized = singleCountry.name.indexOf(countryName);
-       return indexInputValueSmall != -1 || indexInputValueCapilized != -1;
+    var filteredCountries = resp.filter(function(singleCountry){  
+       return singleCountry.name.toLowerCase().indexOf(countryName.toLowerCase()) != -1;
     });
 
     filteredCountries.forEach(function(item){
@@ -68,27 +66,33 @@ function showCountriesList(resp){
     
         $('<li>').addClass('single-country-card').append($country).append($moreInfo).append($rowWithColumns).append($cardFooter).appendTo(countriesList);
 
+        getAdditionalInfo(item, $parCurrencyName, $img);
+    });
+
+    var notClicked = true;
+
+    $('h3').click(function(){
+        if (notClicked) {
+            $(this).siblings().css("display", "block");
+            notClicked = false;
+        }   else {
+            $(this).siblings().css("display", "none");
+            notClicked= true;
+        }
+    });
+
+    function getAdditionalInfo(i, cur, img) {
         $.ajax({
-            url: urlExtended + item.alpha3Code,
+            url: urlExtended + i.alpha3Code,
             method: 'GET',
             success: showAdditionalInfoList
         });
 
         function showAdditionalInfoList(response){
-            $parCurrencyName.text(response.currencies[0].name || "No information found");
-            $img.attr('src', response.flag);
+            cur.text(response.currencies[0].name || "No information found");
+            img.attr('src', response.flag);
         }
-    });
-
-    var clicked = "false";
-
-    $('h3').click(function(){
-        if ( clicked == "false") {
-            $(this).siblings().css("display", "block");
-            clicked = "true";
-        } else {
-            $(this).siblings().css("display", "none");
-            clicked = "false";
-        }
-    });
+    }
 }
+
+
