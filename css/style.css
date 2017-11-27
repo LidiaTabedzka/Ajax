@@ -79,7 +79,8 @@ body {
     background-color: #2b508c; }
 
 .btn-delete,
-.btn-delete-board {
+.btn-delete-board,
+.name-change {
   position: absolute;
   top: 0;
   left: 0;
@@ -88,6 +89,14 @@ body {
   padding: 7px 14px;
   color: white;
   font-size: 20px; }
+.name-change {
+  right: 0;
+  left: auto;
+}
+.name-change:hover .fa{
+  font-size: 18px;
+  cursor: pointer
+}
   .btn-delete:hover,
   .btn-delete-board:hover {
     font-size: 24px;
@@ -113,14 +122,20 @@ body {
   transition: background-color 0.3s; }
   .card:hover {
     background-color: white; }
-  .card .btn-delete-card {
+  .card .btn-delete-card,
+  .description-change {
     position: absolute;
     top: 0;
     left: 0;
     background-color: lightgray;
     font-size: 15px;
     color: #0f2a54; }
-    .card .btn-delete-card:hover {
+    .description-change {
+      left: auto;
+      right: 0;
+    }
+    .card .btn-delete-card:hover,
+    .description-change:hover {
       background-color: white; }
   .card .card-description {
     display: inline-block;
@@ -134,7 +149,8 @@ body {
 
 .board-form,
 .column-form,
-.card-form {
+.card-form,
+.card-change-form {
   display: none; }
 
 input {
@@ -154,9 +170,11 @@ input {
   .btn:hover {
     cursor: pointer; }
 
-.accept-button {
+.accept-button,
+.accept-change-button {
   background-color: #0e590b; }
-  .accept-button:hover {
+  .accept-button:hover,
+  .accept-change-button:hover {
     background-color: #189613; }
 
 .delete-button {

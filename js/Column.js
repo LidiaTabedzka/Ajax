@@ -17,8 +17,13 @@ function Column(id, name) {
         // CREATING COMPONENTS OF COLUMNS
         var $column = $('<div>').addClass('column');
         var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
+        var $columnChangeTitle = $('<button>').addClass('name-change').attr("id", randomString());
+        $columnChangeTitle.append('<i class="fa fa-pencil" aria-hidden="true"></i>');
+
         var $columnCardList = $('<ul>').addClass('column-card-list');
         var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+
+        //Fields for new card creation
         var $columnAddCard = $('<button>').addClass('add-card').text('Add a card').attr("id", randomString());
         var addCardButtonId = $columnAddCard.attr("id");
 
@@ -34,6 +39,12 @@ function Column(id, name) {
         var deleteButtonId = $inputDeleteCard.attr("id");
 
         var $cardAlert = $('<p>').addClass('card-alert');
+
+        //Fields for change in card description
+        var $inputElementChangeName = $('<input>').addClass('card-change-form input-change');
+        var $inputAcceptCardChangeName = $('<button>').addClass('card-change-form btn accept-change-button');
+        $inputAcceptCardChangeName.append('<i class="fa fa-check" aria-hidden="true"></i>');
+        
 
         // ADDING EVENTS
         $columnDelete.click(function() {
@@ -73,7 +84,6 @@ function Column(id, name) {
             $cardAlert.text("");
             showHideButtons("inline", "none");
         });
-
         function showHideButtons (show, hide) {
             $('#' + addCardButtonId).css("display", show);
             $("#" + inputElementId).css("display", hide);
@@ -81,7 +91,7 @@ function Column(id, name) {
             $("#" + deleteButtonId).css("display", hide);
         }
         // CONSTRUCTION COLUMN ELEMENT
-        $column.append($columnTitle).append($columnDelete).append($columnAddCard).append($inputElement).append($inputAcceptCard).append($inputDeleteCard).append($cardAlert).append($columnCardList);
+        $column.append($columnTitle).append($columnChangeTitle).append($columnDelete).append($columnAddCard).append($inputElement).append($inputAcceptCard).append($inputDeleteCard).append($inputElementChangeName).append($inputAcceptCardChangeName).append($cardAlert).append($columnCardList);
         // RETURN OF CREATED COLUMN
         return $column;
     }

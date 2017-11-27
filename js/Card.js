@@ -10,12 +10,17 @@ function Card(id, name) {
         var $card = $('<li>').addClass('card');
         var $cardDescription = $('<p>').addClass('card-description').text(self.name);
         var $cardDelete = $('<button>').addClass('btn-delete-card').text('x');
+        var $cardChangeDescription = $('<button>').addClass('description-change').attr("id", randomString());
+        $cardChangeDescription.append('<i class="fa fa-pencil" aria-hidden="true"></i>');
         // ADDING EVENTS
         $cardDelete.click(function() {
             self.removeCard();
         });
+        $cardChangeDescription.click(function(){
+            self.changeCardDescription();
+        })
         // CONSTRUCTION CARD ELEMENT
-        $card.append($cardDelete).append($cardDescription);
+        $card.append($cardDelete).append($cardDescription).append($cardChangeDescription);
         // RETURN OF CREATED CARD
         return $card;
     }
@@ -32,5 +37,35 @@ Card.prototype = {
             self.$element.remove();
           }
         });
+    },
+    changeCardDescription: function() {
+        var self = this;
+
+        self.$element.parent().siblings(".add-card").css("display", "none");
+        self.$element.parent().siblings(".card-change-form").css("display", "inline");
+
+        self.$element.parent().siblings('.input-change').val(self.name).focus();
+
+        self.$element.parent().siblings(".accept-change-button").click(function(){
+            var newCardDescription = self.$element.parent().siblings('.input-change').val();
+
+            $.ajax({
+                url: baseUrl + '/card/' + self.id,
+                method: 'PUT',
+                data: {
+                    name: newCardDescription
+                },
+                success: function(){
+                   self.$element.children('.card-description').text(newCardDescription);  
+                   self.$element.parent().siblings(".add-card").css("display", "inline");
+                   self.$element.parent().siblings(".card-change-form").css("display", "none");
+                }
+              });
+
+        });
+
+
+         
     }
 }
+
