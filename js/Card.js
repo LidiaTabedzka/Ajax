@@ -1,8 +1,9 @@
-function Card(id, name) {
+function Card(id, name, columnId) {
     var self = this;
 
     this.id = id;
     this.name = name;
+    this.columnId = columnId;
     this.$element = createCard();
 
     function createCard() {
@@ -10,7 +11,7 @@ function Card(id, name) {
         var $card = $('<li>').addClass('card');
         var $cardDescription = $('<p>').addClass('card-description').text(self.name);
         var $cardDelete = $('<button>').addClass('btn-delete-card').text('x');
-        var $cardChangeDescription = $('<button>').addClass('description-change').attr("id", randomString());
+        var $cardChangeDescription = $('<button>').addClass('description-change');
         $cardChangeDescription.append('<i class="fa fa-pencil" aria-hidden="true"></i>');
         // ADDING EVENTS
         $cardDelete.click(function() {
@@ -47,25 +48,24 @@ Card.prototype = {
         self.$element.parent().siblings('.input-change').val(self.name).focus();
 
         self.$element.parent().siblings(".accept-change-button").click(function(){
-            var newCardDescription = self.$element.parent().siblings('.input-change').val();
+            self.name = self.$element.parent().siblings('.input-change').val();
+            console.log(self.name);
 
             $.ajax({
                 url: baseUrl + '/card/' + self.id,
                 method: 'PUT',
                 data: {
-                    name: newCardDescription
+                    name: self.name,
+                    bootcamp_kanban_column_id: self.columnId
                 },
-                success: function(){
-                   self.$element.children('.card-description').text(newCardDescription);  
-                   self.$element.parent().siblings(".add-card").css("display", "inline");
-                   self.$element.parent().siblings(".card-change-form").css("display", "none");
-                }
+                success: function updateCardDescription(response){
+                    self.$element.children('.card-description').text(self.name);  
+                    self.$element.parent().siblings(".add-card").css("display", "inline");
+                    self.$element.parent().siblings(".card-change-form").css("display", "none");
+                    console.log(response.id);
+                 }
               });
-
         });
-
-
-         
     }
 }
 
