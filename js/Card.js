@@ -49,8 +49,11 @@ Card.prototype = {
 
         self.$element.parent().siblings(".accept-change-button").click(function(){
             self.name = self.$element.parent().siblings('.input-change').val();
-            console.log(self.name);
 
+            if ( self.name == "") {
+                self.name = "No description";
+            } 
+                
             $.ajax({
                 url: baseUrl + '/card/' + self.id,
                 method: 'PUT',
@@ -58,13 +61,21 @@ Card.prototype = {
                     name: self.name,
                     bootcamp_kanban_column_id: self.columnId
                 },
-                success: function updateCardDescription(response){
+                success: function (){
                     self.$element.children('.card-description').text(self.name);  
                     self.$element.parent().siblings(".add-card").css("display", "inline");
                     self.$element.parent().siblings(".card-change-form").css("display", "none");
-                    console.log(response.id);
-                 }
-              });
+                    self.$element.parent().siblings(".accept-change-button").off('click');
+                }
+            });
+        });
+
+        self.$element.parent().siblings('.input-change').keyup(function(event){
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                self.$element.parent().siblings(".accept-change-button").click();
+                self.$element.parent().siblings(".accept-change-button").off('click');
+            }
         });
     }
 }

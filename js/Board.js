@@ -37,6 +37,11 @@ function initSortable() {
         var $columnAlert = $('<p>').addClass('column-alert');
         var $boardColumnContainer = $('<div>').addClass('column-container');
 
+        //Fields for change in card description
+        var $inputElementChangeTitle = $('<input>').addClass('column-change-form input-change');
+        var $inputAcceptColumnChangeTitle= $('<button>').addClass('column-change-form btn accept-change-button');
+        $inputAcceptColumnChangeTitle.append('<i class="fa fa-check" aria-hidden="true"></i>');
+
         // ADDING EVENTS
         $boardDelete.click(function() {
             self.removeBoard();
@@ -81,7 +86,7 @@ function initSortable() {
             $("#" + deleteButtonId).css("display", hide);
         }
         // CONSTRUCTION BOARD ELEMENT
-        $board.append($boardDelete).append($boardDescription).append($boardAddColumn).append($inputElement).append($inputAcceptColumn).append($inputDeleteColumn).append($columnAlert).append($boardColumnContainer);
+        $board.append($boardDelete).append($boardDescription).append($boardAddColumn).append($inputElement).append($inputAcceptColumn).append($inputDeleteColumn).append($inputElementChangeTitle).append($inputAcceptColumnChangeTitle).append($columnAlert).append($boardColumnContainer);
         // RETURN OF CREATED BOARD
         return $board;
     }

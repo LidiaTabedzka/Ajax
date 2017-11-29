@@ -150,7 +150,8 @@ body {
 .board-form,
 .column-form,
 .card-form,
-.card-change-form {
+.card-change-form,
+.column-change-form {
   display: none; }
 
 input {

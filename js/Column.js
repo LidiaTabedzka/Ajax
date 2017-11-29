@@ -17,7 +17,7 @@ function Column(id, name) {
         // CREATING COMPONENTS OF COLUMNS
         var $column = $('<div>').addClass('column');
         var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-        var $columnChangeTitle = $('<button>').addClass('name-change').attr("id", randomString());
+        var $columnChangeTitle = $('<button>').addClass('name-change');
         $columnChangeTitle.append('<i class="fa fa-pencil" aria-hidden="true"></i>');
 
         var $columnCardList = $('<ul>').addClass('column-card-list');
@@ -50,6 +50,9 @@ function Column(id, name) {
         $columnDelete.click(function() {
             self.removeColumn();
         });
+        $columnChangeTitle.click(function(){
+            self.changeColumnTitle();
+        })
         $columnAddCard.click(function(){
             showHideButtons("none", "inline");    
             $("#" + inputElementId).val("").focus();           
@@ -66,7 +69,7 @@ function Column(id, name) {
                     bootcamp_kanban_column_id: self.id
                     },
                     success: function(response) {
-                        var card = new Card(response.id, ($("#" + inputElementId)).val());
+                        var card = new Card(response.id, ($("#" + inputElementId)).val(), self.id);
                         self.addCard(card);
                     }
                 });
@@ -109,6 +112,44 @@ Column.prototype = {
           success: function(response){
             self.$element.remove();
           }
+        });
+    },
+    changeColumnTitle: function() {
+        var self = this;
+
+        self.$element.parent().siblings(".create-column").css("display", "none");
+        self.$element.parent().siblings(".column-change-form").css("display", "inline");
+
+        self.$element.parent().siblings('.input-change').val(self.name).focus();
+
+        self.$element.parent().siblings(".accept-change-button").click(function(){
+            self.name = self.$element.parent().siblings('.input-change').val();
+
+            if (self.name == "") {
+                self.name = "No name given";
+            }
+            
+            $.ajax({
+                url: baseUrl + '/column/' + self.id,
+                method: 'PUT',
+                data: {
+                    name: self.name
+                },
+                success: function (){
+                    self.$element.children('.column-title').text(self.name);  
+                    self.$element.parent().siblings(".create-column").css("display", "inline");
+                    self.$element.parent().siblings(".column-change-form").css("display", "none");
+                    self.$element.parent().siblings(".accept-change-button").off('click');
+                }
+            });
+        });
+
+        self.$element.parent().siblings('.input-change').keyup(function(event){
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                self.$element.parent().siblings(".accept-change-button").click();
+                self.$element.parent().siblings(".accept-change-button").off('click');
+            }
         });
     }
 }
