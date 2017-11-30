@@ -8,7 +8,7 @@ function Card(id, name, columnId) {
 
     function createCard() {
         // CREATING COMPONENTS OF CARDS
-        var $card = $('<li>').addClass('card');
+        var $card = $('<li>').addClass('card').attr("id", self.id);
         var $cardDescription = $('<p>').addClass('card-description').text(self.name);
         var $cardDelete = $('<button>').addClass('btn-delete-card').text('x');
         var $cardChangeDescription = $('<button>').addClass('description-change');
@@ -41,6 +41,7 @@ Card.prototype = {
     },
     changeCardDescription: function() {
         var self = this;
+        var columnId = self.$element.parent().parent().attr("id");
 
         self.$element.parent().siblings(".add-card").css("display", "none");
         self.$element.parent().siblings(".card-change-form").css("display", "inline");
@@ -59,7 +60,7 @@ Card.prototype = {
                 method: 'PUT',
                 data: {
                     name: self.name,
-                    bootcamp_kanban_column_id: self.columnId
+                    bootcamp_kanban_column_id: columnId
                 },
                 success: function (){
                     self.$element.children('.card-description').text(self.name);  

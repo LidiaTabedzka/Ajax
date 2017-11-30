@@ -15,7 +15,7 @@ function Column(id, name) {
 
     function createColumn() {
         // CREATING COMPONENTS OF COLUMNS
-        var $column = $('<div>').addClass('column');
+        var $column = $('<div>').addClass('column').attr("id", self.id);
         var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
         var $columnChangeTitle = $('<button>').addClass('name-change');
         $columnChangeTitle.append('<i class="fa fa-pencil" aria-hidden="true"></i>');

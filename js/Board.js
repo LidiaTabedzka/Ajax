@@ -2,8 +2,23 @@
 function initSortable() {
     $('.column-card-list').sortable({
       connectWith: '.column-card-list',
-      placeholder: 'card-placeholder'
+      placeholder: 'card-placeholder',
+      receive: function(event, ui) {
+          var newColumnId = event.target.offsetParent.id;
+          var cardId = ui.item[0].id;
+          var cardDescription = ui.item.children("p").text();
+
+          $.ajax({
+            url: baseUrl + '/card/' + cardId,
+            method: 'PUT',
+            data: {
+                name: cardDescription,
+                bootcamp_kanban_column_id: newColumnId
+            }
+        });
+      }
     }).disableSelection();
+    
 }
 
  //tworzenie nowych tablic

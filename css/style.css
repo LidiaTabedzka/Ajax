@@ -8,19 +8,23 @@ body {
   box-sizing: border-box;
   text-align: center; }
 
+/*Styles for boards*/
 .board {
   text-align: center;
   background-image: url("https://images.pexels.com/photos/625219/pexels-photo-625219.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb");
   background-size: cover;
   padding: 10px;
   margin: 10px;
-  position: relative; }
-  .board h1 {
-    letter-spacing: 2px;
-    font-size: 50px;
-    font-family: 'Vollkorn SC', serif;
-    margin: 10px; }
+  position: relative;
+}
+.board h1 {
+  letter-spacing: 2px;
+  font-size: 50px;
+  font-family: 'Vollkorn SC', serif;
+  margin: 10px; 
+}
 
+/*Styles for buttons: "Add a new board" and "Add a column" */
 .create-column,
 .create-board {
   background-color: #0f2a54;
@@ -29,40 +33,48 @@ body {
   border: none;
   transition: 0.3s;
   padding: 10px 20px;
-  margin-bottom: 20px; }
-  .create-column:hover,
-  .create-board:hover {
-    background-color: #2b508c;
-    cursor: pointer; }
+  margin-bottom: 20px; 
+}
+.create-column:hover,
+.create-board:hover {
+  background-color: #2b508c;
+  cursor: pointer; 
+}
 
+/*Styles for columns*/
 .column-container {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-around; }
-
+  justify-content: space-around; 
+}
 .column {
   text-align: center;
   background-color: #0f2a54;
   width: 300px;
   min-height: 500px;
   margin: 10px;
-  position: relative; }
-  .column:hover {
-    -webkit-box-shadow: 0px 0px 21px 4px white;
-    -moz-box-shadow: 0px 0px 21px 4px white;
-    box-shadow: 0px 0px 21px 4px white; }
-  .column input {
-    height: 27px;
-    margin-bottom: 0; }
-  .column .btn {
-    height: 37px; }
+  position: relative; 
+}
+.column:hover {
+  -webkit-box-shadow: 0px 0px 21px 4px white;
+  -moz-box-shadow: 0px 0px 21px 4px white;
+  box-shadow: 0px 0px 21px 4px white; 
+}
 
+/*Styles for column title, input "Add a card" and column buttons*/
+.column input {
+  height: 27px;
+  margin-bottom: 0; 
+}
+.column .btn {
+  height: 37px; 
+}
 .column-title {
   background-color: #2b508c;
   margin-top: 0;
-  padding: 5px; }
-
+  padding: 5px; 
+}
 .add-card {
   background-color: #0f2a54;
   color: white;
@@ -71,13 +83,14 @@ body {
   transition: 0.3s;
   padding: 5px 10px;
   margin: 0 5px;
-  border: 2px solid #2b508c; }
-  .add-card:hover {
-    background-color: #2b508c;
-    cursor: pointer; }
-  .add-card:hover {
-    background-color: #2b508c; }
+  border: 2px solid #2b508c; 
+}
+.add-card:hover {
+  background-color: #2b508c;
+  cursor: pointer; 
+}
 
+/*Styles for column "X" buttons and "pencil" button*/
 .btn-delete,
 .btn-delete-board,
 .name-change {
@@ -88,7 +101,8 @@ body {
   border: none;
   padding: 7px 14px;
   color: white;
-  font-size: 20px; }
+  font-size: 20px; 
+}
 .name-change {
   right: 0;
   left: auto;
@@ -97,21 +111,23 @@ body {
   font-size: 18px;
   cursor: pointer
 }
-  .btn-delete:hover,
-  .btn-delete-board:hover {
-    font-size: 24px;
-    padding: 4px 12px;
-    cursor: pointer; }
-
+.btn-delete:hover,
+.btn-delete-board:hover {
+  font-size: 24px;
+  padding: 4px 12px;
+  cursor: pointer; 
+}
 .btn-delete-board {
-  background-color: transparent; }
+  background-color: transparent; 
+}
 
+/*Styles for cards*/
 .column-card-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  min-height: 100px; }
-
+  min-height: 100px; 
+}
 .card {
   background: lightgray;
   margin: 10px;
@@ -119,78 +135,96 @@ body {
   text-align: left;
   padding-left: 40px;
   color: #0f2a54;
-  transition: background-color 0.3s; }
-  .card:hover {
-    background-color: white; }
-  .card .btn-delete-card,
-  .description-change {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: lightgray;
-    font-size: 15px;
-    color: #0f2a54; }
-    .description-change {
-      left: auto;
-      right: 0;
-    }
-    .card .btn-delete-card:hover,
-    .description-change:hover {
-      background-color: white; }
-  .card .card-description {
-    display: inline-block;
-    font-family: 'Courgette', cursive; }
+  transition: background-color 0.3s; 
+}
+.card:hover {
+  background-color: white; 
+}
 
+/*Styles for card button: "X" and "pencil"*/
+.card .btn-delete-card,
+.description-change {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightgray;
+  font-size: 15px;
+  color: #0f2a54; 
+}
+.description-change {
+  left: auto;
+  right: 0;
+}
+.card .btn-delete-card:hover,
+.description-change:hover {
+  background-color: white; 
+}
+
+/*Styles for card desciption fild and card placeholder*/
+.card .card-description {
+  display: inline-block;
+  font-family: 'Courgette', cursive; 
+}
 .card-placeholder {
   background: #0f2a54;
   border: 2px dotted lightgray;
   margin: 10px;
-  height: 48px; }
+  height: 48px; 
+}
 
+/*Styles for inputs fields*/
 .board-form,
 .column-form,
 .card-form,
 .card-change-form,
 .column-change-form {
-  display: none; }
+  display: none; 
+}
 
+/*General styles for inputs and buttons*/
 input {
   height: 33px;
   padding: 5px;
   margin-bottom: 20px;
   font-size: 15px;
-  border: none; }
-
+  border: none; 
+}
 .btn {
   height: 43px;
   width: 43px;
   padding: 0;
   border: none;
   color: white;
-  transition: 0.3s; }
-  .btn:hover {
-    cursor: pointer; }
+  transition: 0.3s; 
+}
+.btn:hover {
+  cursor: pointer; 
+}
+.fa {
+  font-size: 15px; 
+}
 
+/*Styles for input buttons and alerts*/
 .accept-button,
 .accept-change-button {
-  background-color: #0e590b; }
-  .accept-button:hover,
-  .accept-change-button:hover {
-    background-color: #189613; }
-
+  background-color: #0e590b; 
+}
+.accept-button:hover,
+.accept-change-button:hover {
+    background-color: #189613; 
+}
 .delete-button {
-  background-color: #ba1f0b; }
-  .delete-button:hover {
-    background-color: #e5260d; }
-
+  background-color: #ba1f0b; 
+}
+.delete-button:hover {
+  background-color: #e5260d; 
+}
 .board-alert,
 .column-alert {
   color: #ba1f0b;
   display: inline;
-  margin-left: 10px; }
-
+  margin-left: 10px; 
+}
 .column-alert {
-  color: white; }
-
-.fa {
-  font-size: 15px; }
+  color: white; 
+}
