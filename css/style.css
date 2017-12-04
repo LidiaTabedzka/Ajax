@@ -1,4 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
+
 body {
     background-color: gray;
     color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+h1 {
+    font-family: 'Shadows Into Light Two', cursive;
+    letter-spacing: 5px;
+    font-size: 40px;
+}
+.box {
+    margin: 60px;
+}
+.quote {
+    font-style: italic;
+}
+.buttons-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.trigger,
+.tweet {
+    width: 350px;
+    height: 50px;
+    margin: 20px;
+    letter-spacing: 1px;
+    font-size: 20px;    
+    transition: 0.3s;
+}
+.trigger {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+.trigger:hover,
+.tweet:hover {
+    background-color: white;
+    color: #1DA1F2;
+}
+.tweet {
+    background-color: #1DA1F2;
+    height: 46px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #1DA1F2;
+}
+a {
+    text-decoration: none;
 }
